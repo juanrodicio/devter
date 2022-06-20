@@ -1,4 +1,3 @@
-import AppLayout from "components/AppLayout"
 import Devit from "components/Devit"
 import useUser from "hooks/useUser"
 
@@ -22,49 +21,47 @@ export default function HomePage() {
 
   return (
     <>
-      <AppLayout>
-        <Head>
-          <title>Inicio / Devter</title>
-        </Head>
-        <header>
-          <h2>Inicio</h2>
-        </header>
-        <section>
-          {timeline.map(
-            ({ createdAt, content, id, img, userId, username, avatar }) => {
-              return (
-                <Devit
-                  avatar={avatar}
-                  createdAt={createdAt}
-                  id={id}
-                  img={img}
-                  key={id}
-                  content={content}
-                  username={username}
-                  userId={userId}
-                />
-              )
-            }
-          )}
-        </section>
-        <nav>
-          <Link href="/home">
-            <a>
-              <Home width={32} height={32} stroke="#09f" />
-            </a>
-          </Link>
-          <Link href="/search">
-            <a>
-              <Search width={32} height={32} stroke="#09f" />
-            </a>
-          </Link>
-          <Link href="/compose/tweet">
-            <a>
-              <Create width={32} height={32} stroke="#09f" />
-            </a>
-          </Link>
-        </nav>
-      </AppLayout>
+      <Head>
+        <title>Inicio / Devter</title>
+      </Head>
+      <header>
+        <h2>Inicio</h2>
+      </header>
+      <section>
+        {timeline.map(
+          ({ createdAt, content, id, img, userId, username, avatar }) => {
+            return (
+              <Devit
+                avatar={avatar}
+                createdAt={createdAt}
+                id={id}
+                img={img}
+                key={id}
+                content={content}
+                username={username}
+                userId={userId}
+              />
+            )
+          }
+        )}
+      </section>
+      <nav>
+        <Link href="/home">
+          <a>
+            <Home width={32} height={32} stroke="#09f" />
+          </a>
+        </Link>
+        <Link href="/search">
+          <a>
+            <Search width={32} height={32} stroke="#09f" />
+          </a>
+        </Link>
+        <Link href="/compose/tweet">
+          <a>
+            <Create width={32} height={32} stroke="#09f" />
+          </a>
+        </Link>
+      </nav>
       <style jsx>{`
         header {
           align-items: center;
@@ -94,7 +91,6 @@ export default function HomePage() {
           border-top: 1px solid #eee;
           display: flex;
           height: 49px;
-          padding: 10px 0;
           position: sticky;
           width: 100%;
         }
