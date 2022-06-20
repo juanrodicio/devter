@@ -14,7 +14,6 @@ const firebaseConfig = {
 }
 
 const firebaseApp = firebase.initializeApp(firebaseConfig)
-
 const database = firebase.firestore(firebaseApp)
 
 const mapUserFromFirebaseAuthToUser = (user) => {
