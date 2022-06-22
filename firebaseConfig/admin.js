@@ -1,7 +1,7 @@
 import admin from "firebase-admin"
 import "firebase-admin/firestore"
 
-const serviceAccount = require("./firebase-keys.json")
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG)
 
 try {
   admin.initializeApp({
