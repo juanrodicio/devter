@@ -1,22 +1,27 @@
-import Devit from "components/Devit"
+import { colors } from "styles/theme"
 import useUser from "hooks/useUser"
-
-import { fetchLatestDevits } from "firebaseConfig/client"
+import { listenLatestDevits } from "firebaseConfig/client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
+
 import Create from "components/Icons/Create"
+import Devit from "components/Devit"
 import Home from "components/Icons/Home"
 import Search from "components/Icons/Search"
-import { colors } from "styles/theme"
+
 import Head from "next/head"
+import Link from "next/link"
 
 export default function HomePage() {
   const [timeline, setTimeline] = useState([])
   const user = useUser()
 
   useEffect(() => {
-    user && fetchLatestDevits().then(setTimeline)
+    let unsubscribe
+    if (user) {
+      unsubscribe = listenLatestDevits(setTimeline)
+    }
+    return () => unsubscribe && unsubscribe()
   }, [user])
 
   return (
